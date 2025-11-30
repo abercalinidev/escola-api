@@ -9,6 +9,7 @@ public record RepresentanteDTO(Long id,
                                String sobrenome,
                                String celular,
                                String email,
+                               String situacao,
                                @JsonFormat(pattern = "dd/MM/yyyy")
                                LocalDate dataCadastro,
                                EnderecoDTO endereco) {
