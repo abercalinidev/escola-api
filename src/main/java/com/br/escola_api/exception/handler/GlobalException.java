@@ -1,5 +1,6 @@
 package com.br.escola_api.exception.handler;
 
+import com.br.escola_api.exception.AlunoNaoEcontradoException;
 import com.br.escola_api.exception.RepresentanteNaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,11 @@ public class GlobalException {
 
     @ExceptionHandler(RepresentanteNaoEncontradoException.class)
     public ResponseEntity<?> exceptionHandlerRepresentante(RepresentanteNaoEncontradoException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(AlunoNaoEcontradoException.class)
+    public ResponseEntity<?> exceptionHandlerAluno(AlunoNaoEcontradoException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
