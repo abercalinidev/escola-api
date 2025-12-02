@@ -45,6 +45,20 @@ public class AlunoController {
         return ResponseEntity.ok(aluno);
     }
 
+    @PutMapping("/inativar/{alunoId}")
+    public ResponseEntity<AlunoDTO> inativar(@PathVariable(name = "alunoId") Long alunoId) {
+        alunoService.inativar(alunoId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/ativar/{alunoId}")
+    public ResponseEntity<AlunoDTO> ativar(@PathVariable(name = "alunoId") Long alunoId) {
+        alunoService.ativar(alunoId);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/listar")
     public ResponseEntity<List<AlunoDTO>> listar() {
         var alunos = alunoService.listarAlunos();

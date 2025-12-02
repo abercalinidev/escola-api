@@ -11,6 +11,7 @@ import com.br.escola_api.repository.RepresentanteRepository;
 import com.br.escola_api.request.AlunoRequest;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 import static com.br.escola_api.configs.ConstantesGlobais.ALUNO_NAO_ENCONTRADO;
 import static com.br.escola_api.configs.ConstantesGlobais.REPRESENTANTE_NAO_ENCONTRADO;
 import static com.br.escola_api.enuns.Situacao.ATIVO;
+import static com.br.escola_api.enuns.Situacao.INATIVO;
 
 @Service
 @Slf4j
@@ -120,6 +122,26 @@ public class AlunoService {
         return alunosDTO;
     }
 
+    @Transactional
+    public void inativar(Long alunoId) {
+        logger.info("Iniciando o processo para inativar o aluno : {}", alunoId);
+
+        var aluno = verificarAluno(alunoId);
+        aluno.setSituacao(INATIVO);
+
+        logger.info("Aluno inativado com sucesso.");
+    }
+
+    @Transactional
+    public void ativar(Long alunoId) {
+        logger.info("Iniciando o processo para ativar o aluno : {}", alunoId);
+
+        var aluno = verificarAluno(alunoId);
+        aluno.setSituacao(ATIVO);
+
+        logger.info("Aluno ativo com sucesso.");
+    }
+
     public AlunoDTO buscarPorId(Long alunoId) {
         logger.info("Iniciando a buscar de aluno por id : {}", alunoId);
 
@@ -137,6 +159,5 @@ public class AlunoService {
                 .orElseThrow(() -> new AlunoNaoEcontradoException(
                         String.format(ALUNO_NAO_ENCONTRADO, alunoId)));
     }
-
 
 }
