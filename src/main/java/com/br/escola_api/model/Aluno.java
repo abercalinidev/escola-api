@@ -54,4 +54,6 @@ public class Aluno {
     @Embedded
     private Endereco endereco;
 
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+    private List<InformacaoGeral> informacoes;
 }

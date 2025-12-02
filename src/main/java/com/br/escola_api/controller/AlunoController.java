@@ -4,13 +4,13 @@ import com.br.escola_api.dto.AlunoDTO;
 import com.br.escola_api.request.AlunoRequest;
 import com.br.escola_api.service.AlunoService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/api/v1/alunos")

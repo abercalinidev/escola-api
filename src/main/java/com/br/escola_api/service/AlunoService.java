@@ -11,14 +11,13 @@ import com.br.escola_api.repository.RepresentanteRepository;
 import com.br.escola_api.request.AlunoRequest;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.br.escola_api.configs.ConstantesGlobais.ALUNO_NAO_ENCONTRADO;
 import static com.br.escola_api.configs.ConstantesGlobais.REPRESENTANTE_NAO_ENCONTRADO;
