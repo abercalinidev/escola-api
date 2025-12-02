@@ -11,6 +11,8 @@ public record AlunoDTO(Long id,
                        Integer idade,
                        @JsonFormat(pattern = "dd/MM/yyyy")
                        LocalDate dataNascimento,
+                       @JsonFormat(pattern = "dd/MM/yyyy")
+                       LocalDate dataCadastro,
                        String situacao,
                        String serieAluno,
                        EnderecoDTO endereco,
