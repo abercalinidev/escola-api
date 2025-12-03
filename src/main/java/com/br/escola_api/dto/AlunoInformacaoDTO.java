@@ -1,4 +1,5 @@
 package com.br.escola_api.dto;
 
-public record AlunoInformacaoDTO(Long id) {
+public record AlunoInformacaoDTO(Long id,
+                                 String nome) {
 }
