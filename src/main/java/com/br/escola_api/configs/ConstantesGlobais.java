@@ -6,6 +6,6 @@ public class ConstantesGlobais {
 
     public final static String REPRESENTANTE_NAO_ENCONTRADO = "Representante com id : %s não encontrado";
     public final static String ALUNO_NAO_ENCONTRADO = "Aluno com id : %s não encontrado";
-    public final static  String INFORMACAO_GERAL_NAO_ENCONTRADA = "Informação geral com o id : %s não encontrada";
-
+    public final static String INFORMACAO_GERAL_NAO_ENCONTRADA = "Informação geral com o id : %s não encontrada";
+    public final static String BUSCAR_REPRESENTANTE_EMAIL = "Representante com o email : %s não encontrado";
 }

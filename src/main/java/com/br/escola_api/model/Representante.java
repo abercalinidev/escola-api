@@ -46,6 +46,6 @@ public class Representante {
     private Endereco endereco;
 
     @ManyToMany(mappedBy = "representantes")
-    private Set<Aluno> alunos = new HashSet<>();
+    private List<Aluno> alunos = new ArrayList<>();
 
 }

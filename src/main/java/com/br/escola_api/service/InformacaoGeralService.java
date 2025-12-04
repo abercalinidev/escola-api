@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static com.br.escola_api.configs.ConstantesGlobais.ALUNO_NAO_ENCONTRADO;
@@ -112,6 +114,28 @@ public class InformacaoGeralService {
 
         return informacaoGeralDTO;
     }
+
+    public List<InformacaoGeralDTO> listarInformacaoDataAndId(Long alunoId, String dataCadastro) {
+        logger.info("Listando informações para alunoId={} e dataCadastro={}", alunoId, dataCadastro);
+
+        if (dataCadastro == null || dataCadastro.isBlank()) {
+            return informacaoGeralRepository
+                    .listarInformacoesPorAlunoId(alunoId)
+                    .stream()
+                    .map(informacaoGeralMapper::toDTO)
+                    .toList();
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate data = LocalDate.parse(dataCadastro, formatter);
+
+        return informacaoGeralRepository
+                .listarInformacoesPorAlunoIdDataCadastro(alunoId, data)
+                .stream()
+                .map(informacaoGeralMapper::toDTO)
+                .toList();
+    }
+
 
     private InformacaoGeral verificarInformacaoId(Long informacaoGeralId) {
         return informacaoGeralRepository
