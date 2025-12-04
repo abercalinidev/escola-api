@@ -1,9 +1,11 @@
 package com.br.escola_api.controller;
 
 import com.br.escola_api.dto.RepresentanteDTO;
+import com.br.escola_api.request.EmailRequest;
 import com.br.escola_api.request.RepresentanteRequest;
 import com.br.escola_api.service.RepresentanteService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,9 +60,8 @@ public class RepresentanteController {
     @GetMapping("/buscar/{representanteId}")
     public ResponseEntity<RepresentanteDTO> buscarPorId(@PathVariable(name = "representanteId") Long representanteId) {
         var representante = representanteService.buscarPorId(representanteId);
+
         return ResponseEntity.ok(representante);
     }
-
-
 
 }

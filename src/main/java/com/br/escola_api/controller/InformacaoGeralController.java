@@ -59,4 +59,15 @@ public class InformacaoGeralController {
         informacaoGeralService.excluir(informacaoGeralId);
     }
 
+    @GetMapping("/aplicacao/listarinformacoes/{alunoId}")
+    public ResponseEntity<List<InformacaoGeralDTO>> listarInformacoes(
+            @PathVariable Long alunoId,
+            @RequestParam(name = "dataCadastro", required = false) String dataCadastro
+    ) {
+        List<InformacaoGeralDTO> lista = informacaoGeralService.listarInformacaoDataAndId(alunoId, dataCadastro);
+
+        return ResponseEntity.ok(lista);
+    }
+
+
 }

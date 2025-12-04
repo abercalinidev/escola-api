@@ -8,7 +8,7 @@ public record InformacaoGeralDTO(Long id,
                                  String situacaoCafeManha,
                                  String situacaoAlmoco,
                                  String situacaoCafeTarde,
-                                    @JsonFormat(pattern = "dd/MM/yyyy")
+                                 @JsonFormat(pattern = "dd/MM/yyyy")
                                  LocalDate dataCadastro,
                                  String observacao,
                                  AlunoInformacaoDTO aluno) {
